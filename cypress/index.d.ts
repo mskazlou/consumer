@@ -10,10 +10,7 @@ declare global {
        * cy.getAllMovies(token)
        * ```
        */
-      getMovies(
-        token: string,
-        allowedToFail?: boolean
-      ): Chainable<Response<Movie[]> & Messages>
+      getMovies(url?: string): Chainable<Response<Movie[]> & Messages>
 
       /** Gets a movie by id
        * ```js
@@ -21,9 +18,8 @@ declare global {
        * ```
        */
       getMovieById(
-        token: string,
         id: number,
-        allowedToFail?: boolean
+        url?: string
       ): Chainable<Response<Movie> & Messages>
 
       /** Gets a movie by name
@@ -32,9 +28,8 @@ declare global {
        * ```
        */
       getMovieByName(
-        token: string,
         name: string,
-        allowedToFail?: boolean
+        url?: string
       ): Chainable<Response<Movie> & Messages>
 
       /** Creates a movie
@@ -43,9 +38,8 @@ declare global {
        * ```
        */
       addMovie(
-        token: string,
         body: Omit<Movie, 'id'>,
-        allowedToFail?: boolean
+        url?: string
       ): Chainable<Response<Movie> & Messages>
 
       /** Updates a movie by id
@@ -54,9 +48,9 @@ declare global {
        * ```
        */
       updateMovie(
-        token: string,
         id: number,
-        body: Partial<Omit<Movie, 'id'>>
+        body: Partial<Omit<Movie, 'id'>>,
+        url?: string
       ): Chainable<Response<Movie> & Messages>
 
       /** Deletes a  movie
@@ -65,9 +59,8 @@ declare global {
        * ```
        */
       deleteMovie(
-        token: string,
         id: number,
-        allowedToFail?: boolean
+        url?: string
       ): Chainable<Response<Movie> & Messages>
 
       /** https://www.npmjs.com/package/@cypress/skip-test

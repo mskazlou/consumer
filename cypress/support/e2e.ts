@@ -7,32 +7,32 @@ const apiUrl = Cypress.config('baseUrl') || 'http://localhost:3001'
 
 Cypress.Commands.add('getMovies', (url = apiUrl) => {
   cy.log('**getAllMovies**')
-  return cy.task('getAllMovies', url)
+  return cy.task('getMovies', url)
 })
 
-Cypress.Commands.add('getMovieById', (url: string, id: number) => {
+Cypress.Commands.add('getMovieById', (id: number, url = apiUrl) => {
   cy.log(`**getMovieById ${id}**`)
   return cy.task('getMovieById', { url, id })
 })
 
-Cypress.Commands.add('getMovieByName', (url: string, name: string) => {
+Cypress.Commands.add('getMovieByName', (name: string, url = apiUrl) => {
   cy.log(`**getMovieByName ${name}**`)
   return cy.task('getMovieByName', { url, name })
 })
 
-Cypress.Commands.add('addMovie', (url: string, data: Omit<Movie, 'id'>) => {
+Cypress.Commands.add('addMovie', (data: Omit<Movie, 'id'>, url = apiUrl) => {
   cy.log(`**addMovie: ${JSON.stringify(data)}**`)
   return cy.task('addMovie', { url, data })
 })
 
-Cypress.Commands.add('deleteMovie', (url: string, id: number) => {
+Cypress.Commands.add('deleteMovie', (id: number, url = apiUrl) => {
   cy.log(`**deleteMovie ${id}**`)
   return cy.task('deleteMovie', { url, id })
 })
 
 Cypress.Commands.add(
   'updateMovie',
-  (url: string, id: number, data: Partial<Movie>) => {
+  (id: number, data: Partial<Movie>, url = apiUrl) => {
     cy.log(`**updateMovie ${id} ${JSON.stringify(data)}**`)
     return cy.task('updateMovie', { url, id, data })
   }

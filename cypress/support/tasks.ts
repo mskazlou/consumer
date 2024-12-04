@@ -1,6 +1,7 @@
 import log from './log'
 import {
   addMovie,
+  deleteMovieById,
   getMovieById,
   getMovieByName,
   getMovies,
@@ -41,6 +42,9 @@ export default function tasks(on: Cypress.PluginEvents) {
       url: string
       id: number
       data: Partial<Movie>
-    }) => updateMovieById(url, id, data)
+    }) => updateMovieById(url, id, data),
+
+    deleteMovie: ({ url, id }: { url: string; id: number }) =>
+      deleteMovieById(url, id)
   })
 }
